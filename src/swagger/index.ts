@@ -1,23 +1,22 @@
-// Load Swagger JSON file
-// Serve Swagger UI at /api-docs route
-import * as swaggerUi from 'swagger-ui-express';
-import { Swagger_app_controller } from './Swagger_app_controller';
-// import { Swagger_wp_integration } from './Swagger_wp_integration';
+import {SwaggerModule, DocumentBuilder} from '@nestjs/swagger';
+import * as process from "node:process";
+
 
 export class SwaggerConfig {
-  static setup(app: any) {
-    const combinedSwagger = {
-      ...Swagger_app_controller,
-      paths: {
-        ...Swagger_app_controller.paths,
-        // ...Swagger_wp_integration.paths,
-      },
-      definitions: {
-        ...Swagger_app_controller.definitions,
-        // ...Swagger_wp_integration.definitions,
-      },
-    };
+    static setup(app: any) {
 
-    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(combinedSwagger));
-  }
+
+        const config = new DocumentBuilder()
+            .setTitle(process.env.APP_NAME )
+            .setDescription(process.env.APP_DESCRIPTION)
+            .setVersion('1.0')
+            // .addTag('cats')
+            .build();
+
+
+        const document = SwaggerModule.createDocument(app, config);
+        SwaggerModule.setup('api-docs', app, document);
+
+
+    }
 }

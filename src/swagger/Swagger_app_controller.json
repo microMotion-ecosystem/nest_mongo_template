@@ -1,0 +1,39 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API Auth Service",
+    "description": "API documentation for Auth Service"
+  },
+  "basePath": "/",
+  "schemes": ["http", "https"],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": ["System"],
+        "summary": "Check if the service is working",
+        "description": "This endpoint validates if the service is up and running.",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "API is working!!"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+  },
+  "definitions": {
+
+  }
+}
