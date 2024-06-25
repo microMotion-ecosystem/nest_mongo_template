@@ -1,6 +1,6 @@
 import {Controller, Get, UseGuards} from '@nestjs/common';
 import {AppService} from './app.service';
-import {ApiOperation, ApiResponse} from "@nestjs/swagger";
+import {ApiBearerAuth, ApiOperation, ApiResponse} from "@nestjs/swagger";
 import {JwtAuthGuard} from "./jwt-auth/jwt-auth.guard";
 
 @Controller()
@@ -22,14 +22,16 @@ export class AppController {
      */
 
     @Get()
-    @ApiOperation({summary: 'Check if the API is working'})
-    @ApiResponse({status: 200, description: 'API is working correctly.'})
+    @ApiBearerAuth('access-token')
+    // @ApiOperation({summary: 'Check if the API is working'})
+    // @ApiResponse({status: 200, description: 'API is working correctly.'})
     isWorking(): string {
         return this.appService.isWorking();
     }
 
     @UseGuards(JwtAuthGuard)
     @Get('demo')
+    @ApiBearerAuth('access-token')
     @ApiOperation({summary: 'Demo route'})
     @ApiResponse({status: 200, description: 'Returns a demo text.'})
     demo(): string {

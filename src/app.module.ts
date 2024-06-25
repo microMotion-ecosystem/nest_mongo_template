@@ -1,7 +1,9 @@
-import {Module} from '@nestjs/common';
+import {MiddlewareConsumer, Module, RequestMethod} from '@nestjs/common';
 import {AppController} from './app.controller';
 import {AppService} from './app.service';
 import {MongodbModule} from './mongodb/mongodb.module';
+import {JwtStrategy} from "./jwt-auth/jwt.strategy";
+import {CheckHeaderMiddleware} from "./check-header/check-header.middleware";
 
 
 @Module({
@@ -9,7 +11,15 @@ import {MongodbModule} from './mongodb/mongodb.module';
         MongodbModule
     ],
     controllers: [AppController],
-    providers: [AppService],
+    providers: [
+        AppService,
+        JwtStrategy
+    ],
 })
 export class AppModule {
+    configure(consumer: MiddlewareConsumer) {
+        consumer
+            .apply(CheckHeaderMiddleware)
+            .forRoutes({ path: '*', method: RequestMethod.ALL });
+    }
 }

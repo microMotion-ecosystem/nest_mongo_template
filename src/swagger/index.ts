@@ -7,10 +7,23 @@ export class SwaggerConfig {
 
 
         const config = new DocumentBuilder()
-            .setTitle(process.env.APP_NAME )
+            .setTitle(process.env.APP_NAME)
             .setDescription(process.env.APP_DESCRIPTION)
             .setVersion('1.0')
             // .addTag('cats')
+            .addBearerAuth(
+                {type: 'http', scheme: 'bearer', bearerFormat: 'JWT'},
+                'access-token'
+            )
+
+            .addGlobalParameters({
+                name: 'platform',
+                in: 'header',
+                example: 'yu2ahel',
+                required: true,
+                description: 'Platform Key',
+            })
+
             .build();
 
 
