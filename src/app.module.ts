@@ -6,12 +6,14 @@ import {JwtStrategy} from "./core/jwt-auth/jwt.strategy";
 import {CheckHeaderMiddleware} from "./core/middlewares/check-header.middleware";
 import {HttpModule, HttpService} from "@nestjs/axios";
 import {AuthApiService} from "./api-services/auth-api/auth-api.service";
+import { TestModule } from './models/test/test.module';
 
 
 @Module({
     imports: [
         MongodbModule,
-        HttpModule
+        HttpModule,
+        TestModule
     ],
     controllers: [AppController],
     providers: [
