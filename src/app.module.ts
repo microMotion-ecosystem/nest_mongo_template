@@ -1,11 +1,11 @@
 import {MiddlewareConsumer, Module, RequestMethod} from '@nestjs/common';
-import {AppController} from './app.controller';
-import {AppService} from './app.service';
-import {MongodbModule} from './mongodb/mongodb.module';
-import {JwtStrategy} from "./jwt-auth/jwt.strategy";
-import {CheckHeaderMiddleware} from "./check-header/check-header.middleware";
-import { AuthMicroserviceService } from './jwt-auth/auth-microservice/auth-microservice.service';
+import {AppController} from './controllers/app.controller';
+import {AppService} from './services/app.service';
+import {MongodbModule} from './config/mongodb.module';
+import {JwtStrategy} from "./core/jwt-auth/jwt.strategy";
+import {CheckHeaderMiddleware} from "./core/middlewares/check-header.middleware";
 import {HttpModule, HttpService} from "@nestjs/axios";
+import {AuthApiService} from "./api-services/auth-api/auth-api.service";
 
 
 @Module({
@@ -16,7 +16,7 @@ import {HttpModule, HttpService} from "@nestjs/axios";
     controllers: [AppController],
     providers: [
         AppService,
-        AuthMicroserviceService,
+        AuthApiService,
         JwtStrategy
     ],
 })

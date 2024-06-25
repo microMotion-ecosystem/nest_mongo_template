@@ -3,7 +3,7 @@ import { HttpService } from '@nestjs/axios';
 import {map, Observable} from 'rxjs';
 
 @Injectable()
-export class AuthMicroserviceService {
+export class AuthApiService {
     constructor(private httpService: HttpService) {}
 
     validateToken(token: string): Observable<boolean> {
