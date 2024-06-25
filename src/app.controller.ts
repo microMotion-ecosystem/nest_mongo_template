@@ -1,7 +1,8 @@
-import {Controller, Get, UseGuards} from '@nestjs/common';
+import {Controller, Get, UseGuards, } from '@nestjs/common';
 import {AppService} from './app.service';
 import {ApiBearerAuth, ApiOperation, ApiResponse} from "@nestjs/swagger";
 import {JwtAuthGuard} from "./jwt-auth/jwt-auth.guard";
+import {CheckHeaderMiddleware} from "./check-header/check-header.middleware";
 
 @Controller()
 export class AppController {
@@ -28,6 +29,11 @@ export class AppController {
     isWorking(): string {
         return this.appService.isWorking();
     }
+
+
+
+
+
 
     @UseGuards(JwtAuthGuard)
     @Get('demo')
