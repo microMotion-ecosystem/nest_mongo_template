@@ -2,7 +2,7 @@ import {MiddlewareConsumer, Module, RequestMethod} from '@nestjs/common';
 import {AppController} from './controllers/app.controller';
 import {AppService} from './services/app.service';
 import {MongodbModule} from './config/mongodb.module';
-import {HttpModule, HttpService} from "@nestjs/axios";
+import {HttpModule} from "@nestjs/axios";
 import {AuthApiService} from "./api-services/auth-api/auth-api.service";
 import {CheckHeaderMiddleware} from "./core/platform-key-middleware/check-header.middleware";
 import {JwtStrategy} from "./core/jwt-auth-guard/jwt.strategy";
