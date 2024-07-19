@@ -23,6 +23,8 @@ import {RabbitMqConfigModule} from "./config/rabbitmq-config.module";
     ],
 })
 export class AppModule implements NestModule {
+
+    // MiddlewareConsumer is used to configure the middleware vvv
     configure(consumer: MiddlewareConsumer) {
         consumer
             .apply(CheckHeaderMiddleware /* , otherMiddleWare */)
