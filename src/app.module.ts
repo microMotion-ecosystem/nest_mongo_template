@@ -6,12 +6,14 @@ import {HttpModule} from "@nestjs/axios";
 import {AuthApiService} from "./api-services/auth-api/auth-api.service";
 import {CheckHeaderMiddleware} from "./core/platform-key-middleware/check-header.middleware";
 import {JwtStrategy} from "./core/jwt-auth-guard/jwt.strategy";
+import {RabbitMqConfigModule} from "./config/rabbitmq-config.module";
 
 
 @Module({
     imports: [
         MongodbModule,
         HttpModule,
+        RabbitMqConfigModule
     ],
     controllers: [AppController],
     providers: [
