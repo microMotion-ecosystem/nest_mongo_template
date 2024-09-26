@@ -28,13 +28,13 @@ DB_USERNAME=<USERNAME>
 DB_PASSWORD="<PASSWORD>"
 DB_HOST=<HOST>
 DB_NAME=<DB_NAME>
-DB_APP_NAME=<APP_NAME>
+DB_APP_NAME={APP_NAME}
 ```
 
 Or use a full URI:
 
 ```dotenv
-DB_MONGODB_URI=mongodb+srv://<USERNAME>:<PASSWORD>@<HOST>/<DB_NAME>?retryWrites=true&w=majority&appName=<APP_NAME>
+DB_MONGODB_URI=mongodb+srv://<USERNAME>:<PASSWORD>@<HOST>/<DB_NAME>?retryWrites=true&w=majority&appName={APP_NAME}
 ```
 
 ### 3. Create a Model

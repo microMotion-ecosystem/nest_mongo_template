@@ -65,7 +65,7 @@ DB_APP_NAME=<Cluster0 (IF USING MONGODB SAAS SERVICE)>
 **Or** if you want to write the full URI directly to the DB, you can use the following variable instead of the above variables. If `DB_MONGODB_URI` has a value, then the above variables will be ignored:
 
 ```dotenv
-DB_MONGODB_URI=mongodb+srv://<USERNAME>:<PASSWORD>@<HOST>/<DB_NAME>?retryWrites=true&w=majority&appName=<APP_NAME>
+DB_MONGODB_URI=mongodb+srv://<USERNAME>:<PASSWORD>@<HOST>/<DB_NAME>?retryWrites=true&w=majority&appName={APP_NAME}
 ```
 
 ## 3. Creating a Model
