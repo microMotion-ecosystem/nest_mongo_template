@@ -1,6 +1,7 @@
 # Get the name of the parent folder
 #$parentFolderName = Split-Path -Leaf (Get-Location)
-$parentFolderName = (Split-Path -Leaf (Get-Location)) -replace '_', '-'
+#$parentFolderName = (Split-Path -Leaf (Get-Location)) -replace '_', '-'
+$parentFolderName = ((Split-Path -Leaf (Get-Location)) -replace '_', '-').ToLower()
 
 git add README.md
 git commit -m "first commit"
