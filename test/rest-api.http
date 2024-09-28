@@ -1,4 +1,4 @@
-GET http://localhost:5502/
+GET http://localhost:5504/
 Accept: application/json
 Authorization: Bearer <your-access-token>
 X-Platform: yu2ahel
