@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { Observable } from 'rxjs';
-import {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
+import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 @Injectable()
 export class MyHttpService {
   constructor(private httpService: HttpService) {
     this.httpService.axiosRef.interceptors.request.use((config: any) => {
-      console.log(`Request to ${config.url}`,{
+      console.log(`Request to ${config.url}`, {
         method: config.method,
         header: config.headers.toJSON(),
-        body: config.data
+        body: config.data,
       });
       return config;
     });
@@ -18,8 +18,8 @@ export class MyHttpService {
       console.log(`response from ${config.request.path}`, {
         status: config.status,
         header: config.headers.toJSON(),
-        body: config.data
-      } );
+        body: config.data,
+      });
       return config;
     });
   }
@@ -28,20 +28,19 @@ export class MyHttpService {
     return {
       ...config,
       headers: {
-        'Content-Type': 'application/json',
-        'X-Platform': 'fuse',
-        'X-Correlation-ID': mainHeader['x-Correlation-ID'],
-        Authorization: mainHeader['authorization'],
-        'X-Client-Service': mainHeader['X-Client-Service'],
-        'X-Clients-Ancestors': mainHeader['X-Clients-Ancestors'],
+        'content-type': 'application/json',
+        'x-platform': 'fuse',
+        'x-correlation-id': mainHeader['x-correlation-id'],
+        'authorization': mainHeader['authorization'],
+        'x-client-service': mainHeader['x-client-service'],
+        'x-clients-ancestors': mainHeader['x-clients-ancestors'],
       },
     };
   }
 
   get axiosRef(): AxiosInstance {
-    return this.httpService.axiosRef
+    return this.httpService.axiosRef;
   }
-
 
   get<T = any>(
     url: string,

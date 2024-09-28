@@ -1,7 +1,7 @@
 GET http://localhost:5504/
 Accept: application/json
 Authorization: Bearer <your-access-token>
-X-Platform: yu2ahel
+x-platform: yu2ahel
 
 
 ###
@@ -9,6 +9,6 @@ X-Platform: yu2ahel
 GET http://localhost:5502/demo
 Accept: application/json
 Authorization: Bearer <your-access-token>
-X-Platform: yu2ahel
+x-platform: yu2ahel
 
 ###
